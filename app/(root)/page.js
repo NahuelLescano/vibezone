@@ -1,5 +1,4 @@
 import { UserButton } from "@clerk/nextjs";
-import { createOrUpdateUser } from "@lib/actions/user";
 
 export default function Home(){
 
