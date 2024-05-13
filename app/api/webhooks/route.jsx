@@ -1,7 +1,6 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
-import { WebhookEvent } from '@clerk/nextjs/server'
-
+import { createOrUpdateUser, deleteUser } from '@lib/actions/user'
 export async function POST(req) {
 
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
@@ -51,13 +50,24 @@ export async function POST(req) {
   const eventType = evt.type;
   if(eventType === 'user.created'|| eventType === "user.updated"){
     const { id, first_name, last_name,image_url,email_addresses, username } = evt.data;
-    try{
+    try {
+      await createOrUpdateUser({
+        id:id,
+        first_name:first_name,
+        last_name:last_name,
+        image_url:image_url,
+        email_addresses:email_addresses[0].email_address,
+        username:username
+      });
 
-      console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-      console.log('Webhook body:', body)
-      return new Response('salio todo bien', { status: 200 })
-    }catch(err){
-      console.error(err);
+      return new Response("User is created or updated", {
+        status: 200,
+      });
+    } catch (err) {
+      console.error("Error creating or updating user:", err);
+      return new Response("Error occured", {
+        status: 500,
+      });
     }
 
   }
