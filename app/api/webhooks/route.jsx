@@ -53,11 +53,11 @@ export async function POST(req) {
     try {
       await createOrUpdateUser(
         id,
-        first_name,
-        last_name,
-        image_url,
-        email_addresses,
-        username
+        // first_name,
+        // last_name,
+        // image_url,
+        // email_addresses,
+        // username
       );
 
       return new Response("User is created or updated", {
