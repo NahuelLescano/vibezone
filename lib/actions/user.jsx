@@ -12,22 +12,21 @@ export const createOrUpdateUser = async ({
   try {
     await connectToDB();
 
-    // const user = await User.findOneAndUpdate(
-    //   { clerkId: id },
-    //   {
-    //     $set: {
-    //       firstName: first_name,
-    //       lastName: last_name,
-    //       profilePhoto: image_url,
-    //       email: email_addresses[0].email_address,
-    //       username: username,
-    //     },
-    //   },
-    //   { upsert: true, new: true } // if user doesn't exist, create a new one
-    // );
+    const user = await User.findOneAndUpdate(
+      { clerkId: id },
+      {
+        $set: {
+          firstName: first_name,
+          lastName: last_name,
+          profilePhoto: image_url,
+          username: username,
+        },
+      },
+      { upsert: true, new: true } // if user doesn't exist, create a new one
+    );
 
-    // await user.save();
-    // return user;
+    await user.save();
+    console.log(user);
   } catch (error) {
     console.error(error);
   }
