@@ -23,7 +23,7 @@ export const createOrUpdateUser = async (
           username: username,
         },
       },
-      { upsert: true, new: true } 
+      { upsert: true, new: true } // if user doesn't exist, create a new one
     );
 
     await user.save();
