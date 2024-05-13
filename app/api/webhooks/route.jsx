@@ -60,7 +60,7 @@ export async function POST(req) {
       username:'facundo'
     }
     try {
-      await createOrUpdateUser(user);
+      // await createOrUpdateUser(user);
 
       return new Response("User is created or updated", {
         status: 200,
