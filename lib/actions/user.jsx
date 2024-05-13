@@ -14,15 +14,15 @@ export const createOrUpdateUser = async ({
 
     const user = await User.findOneAndUpdate(
       { clerkId: id },
-      {
-        $set: {
-          firstName: first_name,
-          lastName: last_name,
-          profilePhoto: image_url,
-          email: email_addresses[0].email_address,
-          username: username,
-        },
-      },
+      // {
+      //   $set: {
+      //     firstName: first_name,
+      //     lastName: last_name,
+      //     profilePhoto: image_url,
+      //     email: email_addresses[0].email_address,
+      //     username: username,
+      //   },
+      // },
       { upsert: true, new: true } // if user doesn't exist, create a new one
     );
 
