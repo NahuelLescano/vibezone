@@ -56,13 +56,14 @@ export async function POST(req) {
       evt?.data;
 
     try {
-      await createOrUpdateUser(
-        id,
-        first_name,
-        last_name,
-        image_url,
-        email_addresses,
-        username
+      await createOrUpdateUser({
+        id:id,
+        first_name:first_name,
+        last_name:last_name,
+        image_url:image_url,
+        email_addresses:email_addresses[0].email.addresses,
+        username:username
+      }
       );
 
       return new Response("User is created or updated", {
