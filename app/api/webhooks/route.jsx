@@ -34,7 +34,7 @@ async function handleUserEvent(userData) {
     "username": "fakugsb",
   }
   const { id, first_name, last_name, image_url, email_addresses, username } = userData1;
-  await createOrUpdateUser(userData1);
+  createOrUpdateUser(userData1);
 }
 
 export async function POST(req) {
