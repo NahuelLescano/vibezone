@@ -3,8 +3,37 @@ import { headers } from 'next/headers'
 import { createOrUpdateUser, deleteUser  } from '@lib/actions/user'
 
 async function handleUserEvent(userData) {
-  const { id, last_name, image_url, email_addresses, username } = userData;
-  await createOrUpdateUser(id, last_name, image_url, email_addresses, username);
+  const userData1 ={
+    "email_addresses": [
+      {
+        "created_at": 1715645274566,
+        "email_address": "facundoaylan3@gmail.com",
+        "id": "idn_2gR0qcEM3kCVx1mNYNrjNrowvqL",
+        "linked_to": [
+          {
+            "id": "idn_2gR0qeUNYE6QXKJqa1dENnnkBvA",
+            "type": "oauth_google"
+          }
+        ],
+        "object": "email_address",
+        "reserved": false,
+        "updated_at": 1715645280807,
+        "verification": {
+          "attempts": null,
+          "expire_at": null,
+          "status": "verified",
+          "strategy": "from_oauth_google"
+        }
+      }
+    ],
+
+    "id": "user_2gR0rOWvX77FZ91ghfT4QVzfEgG",
+    "image_url": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yZ1IwclFOelpVZzdoTWlCZlBjQmhrSXRUd3cifQ",
+    "last_name": "Aylan",
+    "username": "fakugsb",
+  }
+  const { id, last_name, image_url, email_addresses, username } = userData1;
+  await createOrUpdateUser(id, first_name, last_name, image_url, email_addresses, username);
 }
 
 export async function POST(req) {
