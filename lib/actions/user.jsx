@@ -1,14 +1,13 @@
 import User from "@lib/models/User";
 import { connectToDB } from "@lib/mongodb/mongoose";
 
-export const createOrUpdateUser = async ({
+export const createOrUpdateUser = async (
   id,
   first_name,
   last_name,
   image_url,
   email_addresses,
   username
-}
 ) => {
   try {
     await connectToDB();
@@ -28,7 +27,7 @@ export const createOrUpdateUser = async ({
     );
 
     await user.save();
-    return(user);
+    return user;
   } catch (error) {
     console.error(error);
   }
