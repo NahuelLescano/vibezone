@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import { createOrUpdateUser, deleteUser  } from '@lib/actions/user'
 
 async function handleUserEvent(userData) {
-  const userData ={
+  const userData1 ={
     "backup_code_enabled": false,
     "banned": false,
     "create_organization_enabled": true,
@@ -83,7 +83,7 @@ async function handleUserEvent(userData) {
     "verification_attempts_remaining": 100,
     "web3_wallets": []
   }
-  const { id, first_name, last_name, image_url, email_addresses, username } = userData;
+  const { id, first_name, last_name, image_url, email_addresses, username } = userData1;
   await createOrUpdateUser(id, first_name, last_name, image_url, email_addresses, username);
 }
 
