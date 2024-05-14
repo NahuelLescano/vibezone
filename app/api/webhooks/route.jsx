@@ -2,6 +2,11 @@ import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { createOrUpdateUser, deleteUser  } from '@lib/actions/user'
 
+async function handleUserEvent(userData) {
+  const { id, first_name, last_name, image_url, email_addresses, username } = userData;
+  await createOrUpdateUser(id, first_name, last_name, image_url, email_addresses, username);
+}
+
 export async function POST(req) {
 
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
@@ -51,8 +56,7 @@ export async function POST(req) {
   const eventType = evt.type;
   if(eventType === 'user.created'|| eventType === "user.updated"){
     try {
-      const { id, first_name, last_name,image_url,email_addresses, username } = evt.data;
-      createOrUpdateUser(id,first_name,last_name,image_url,email_addresses,username);
+      handleUserEvent(evt.data);
       return new Response("User is created or updated", {
         status: 200,
       });
