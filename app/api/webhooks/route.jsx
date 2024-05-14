@@ -4,6 +4,7 @@ import { createOrUpdateUser, deleteUser  } from '@lib/actions/user'
 
 async function handleUserEvent(userData) {
   const userData1 ={
+    "first_name":"Facundo",
     "email_addresses": [
       {
         "created_at": 1715645274566,
@@ -32,8 +33,8 @@ async function handleUserEvent(userData) {
     "last_name": "Aylan",
     "username": "fakugsb",
   }
-  const { id, last_name, image_url, email_addresses, username } = userData1;
-  await createOrUpdateUser(id, last_name, image_url, email_addresses, username);
+  const { id, first_name, last_name, image_url, email_addresses, username } = userData1;
+  await createOrUpdateUser(id,first_name, last_name, image_url, email_addresses, username);
 }
 
 export async function POST(req) {
