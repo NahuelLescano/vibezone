@@ -55,25 +55,25 @@ export async function POST(req) {
     const { id, first_name, last_name, image_url, email_addresses, username } =
       evt?.data;
 
-    try {
-      createOrUpdateUser(
-        id,
-        first_name,
-        last_name,
-        image_url,
-        email_addresses,
-        username
-      );
+    //try {
+    //  createOrUpdateUser(
+    //    id,
+    //    first_name,
+    //    last_name,
+    //    image_url,
+    //    email_addresses,
+    //    username
+    //  );
 
-      return new Response("User is created or updated", {
-        status: 200,
-      });
-    } catch (err) {
-      console.error("Error creating or updating user:", err);
-      return new Response("Error occured", {
-        status: 500,
-      });
-    }
+    //  return new Response("User is created or updated", {
+    //    status: 200,
+    //  });
+    //} catch (err) {
+    //  console.error("Error creating or updating user:", err);
+    //  return new Response("Error occured", {
+    //    status: 500,
+    //  });
+    //}
   }
 
   if (eventType === "user.deleted") {
